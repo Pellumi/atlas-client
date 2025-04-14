@@ -368,7 +368,7 @@ const Chat = () => {
 
                   {msg.role === "assistant" && !msg.pending && (
                     <>
-                      <div className="feedback-container">
+                      <div className="feedback-container2">
                         {/* Tags */}
                         <div className="message-tags">
                           {msg.tags?.map((tag) => (

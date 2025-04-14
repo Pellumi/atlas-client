@@ -538,7 +538,7 @@ const CareerChat = () => {
                     {conversationType === "career"
                       ? [
                           "What career path is best for me with my current skills?",
-                          "How can I transition to a software engineering role?",
+                          "Give me tips on how to improve my resume",
                           "What skills should I develop for my dream job?",
                           "What volunteer work would benefit my career?",
                         ].map((q) => (
