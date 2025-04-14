@@ -8,6 +8,8 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import CareerChat from "./components/CareerChat";
+import ResumeGuidance from "./components/ResumeGuidance"
+
 
 function App() {
   return (
@@ -40,6 +42,8 @@ function App() {
               </ProtectedRoute>
             }
           />
+           <Route path="/resume-guidance" element={<ResumeGuidance />} />
+        <Route path="/resume-guidance/:conversationId" element={<ResumeGuidance />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>
