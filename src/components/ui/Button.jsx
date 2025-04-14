@@ -1,155 +1,37 @@
-// import React from "react";
-import PropTypes from "prop-types";
-import { Spinner } from "./Loader";
-import { Link } from "react-router-dom";
+import { forwardRef } from "react"
+import { cva } from "class-variance-authority"
+import { cn } from "../../lib/utils"
 
-export const PrimaryButton = ({
-  type = "button",
-  className = "",
-  children,
-  onClick,
-  ...props
-}) => (
-  <button
-    type={type}
-    className={`px-6 py-3 bg-primary-vividBlue text-white text-base font-semibold rounded hover:bg-primary-vividBlueHover h-[42px] flex items-center justify-center relative ${className}`}
-    onClick={onClick}
-    {...props}
-  >
-    {children}
-  </button>
-);
+const buttonVariants = cva(
+  "inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none",
+  {
+    variants: {
+      variant: {
+        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+        outline: "border border-input hover:bg-accent hover:text-accent-foreground",
+        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        ghost: "hover:bg-accent hover:text-accent-foreground",
+        link: "underline-offset-4 hover:underline text-primary",
+      },
+      size: {
+        default: "h-10 py-2 px-4",
+        sm: "h-9 px-3 rounded-md",
+        lg: "h-11 px-8 rounded-md",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
+  },
+)
 
-PrimaryButton.propTypes = {
-  type: PropTypes.oneOf(["button", "submit", "reset"]),
-  className: PropTypes.string,
-  children: PropTypes.node.isRequired,
-  onClick: PropTypes.func,
-};
+const Button = forwardRef(({ className, variant, size, asChild = false, ...props }, ref) => {
+  const Comp = asChild ? "a" : "button"
+  return <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />
+})
 
-export const ClearButton = ({
-  type = "button",
-  className = "",
-  children,
-  onClick,
-  ...props
-}) => (
-  <button
-    type={type}
-    className={`px-6 py-3 bg-transparent text-base font-semibold rounded hover:text-primary-vividBlueHover border border-neutral-mediumGray hover:border-primary-vividBlue h-[42px] flex items-center justify-center relative ${className}`}
-    onClick={onClick}
-    {...props}
-  >
-    {children}
-  </button>
-);
+Button.displayName = "Button"
 
-ClearButton.propTypes = {
-  type: PropTypes.oneOf(["button", "submit", "reset"]),
-  className: PropTypes.string,
-  children: PropTypes.node.isRequired,
-  onClick: PropTypes.func,
-};
-
-// export const CustomButton = ({
-//   type = "button",
-//   variant = "default",
-//   size = "base",
-//   onClick,
-//   children,
-//   className = "",
-// }) => {
-//   const baseStyles =
-//     "flex items-center justify-center rounded-md transition-all font-medium";
-
-//   const variantStyles = {
-//     default: "bg-primary-vividBlue text-white hover:bg-primary-vividBlueHover",
-//     outline:
-//       "border border-neutral-mediumGray text-neutral-darkCharcoal hover:bg-neutral-placeholderBg",
-//     icon: "rounded-full border border-neutral-mediumGray hover:bg-neutral-lightGray",
-//   };
-
-//   const sizeStyles = {
-//     sm: "px-3 py-1.5",
-//     base: "px-4 py-2 text-sm",
-//     icon: "p-2",
-//     large: "px-6 py-3 text-base",
-//   };
-
-//   return (
-//     <button
-//       type={type}
-//       onClick={onClick}
-//       className={`${baseStyles} ${
-//         variantStyles[variant] || variantStyles.default
-//       } ${sizeStyles[size] || sizeStyles.base} ${className}`}
-//     >
-//       {children}
-//     </button>
-//   );
-// };
-
-export const CustomButton = ({
-  as = "button",
-  to = "#",
-  type = "button",
-  variant = "dafault",
-  size = "base",
-  onClick,
-  children,
-  className = "",
-  loading = false,
-  ...props
-}) => {
-  const baseStyles =
-    "flex items-center justify-center rounded-md transition-all font-medium relative h-[36px]";
-
-  const variantStyles = {
-    default: "bg-primary-vividBlue text-white hover:bg-primary-vividBlueHover",
-    ghost:
-      "bg-neutral-ghost text-text-ghost hover:bg-neutral-lightGray ",
-    clear:
-      "bg-transparent text-primary-vividBlue border border-primary-vividBlue hover:border-primary-vividBlue hover:text-neutral-softWhite hover:bg-primary-vividBlue",
-    outline:
-      "border border-neutral-mediumGray text-neutral-darkCharcoal hover:bg-neutral-placeholderBg",
-    danger: "bg-primary-brightRed text-white hover:bg-primary-brightRedHover",
-    icon: "rounded-full border border-neutral-lightGray hover:bg-neutral-lightGray",
-  };
-
-  const sizeStyles = {
-    sm: "px-3 py-1.5",
-    base: "px-4 py-2 text-sm",
-    icon: "p-2",
-    lg: "px-6 py-3 text-base",
-  };
-
-  const classes = `${baseStyles} ${
-    variantStyles[variant] || variantStyles.default
-  } ${sizeStyles[size] || sizeStyles.base} ${className}`;
-
-  if (as === "link") {
-    return (
-      <Link to={to} className={classes} {...props}>
-        {children}
-      </Link>
-    );
-  }
-
-  return (
-    <button type={type} onClick={onClick} className={classes} {...props}>
-      {loading ? <Spinner /> : children}
-    </button>
-  );
-};
-
-CustomButton.propTypes = {
-  as: PropTypes.oneOf(["button", "link"]),
-  to: PropTypes.string,
-  type: PropTypes.oneOf(["button", "submit", "reset"]),
-  variant: PropTypes.oneOf(["default", "ghost", "clear", "danger", "icon"]),
-  size: PropTypes.oneOf(["sm", "base", "icon", "lg", "full"]),
-  onClick: PropTypes.func,
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
-  loading: PropTypes.bool,
-};
+export { Button, buttonVariants }

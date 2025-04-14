@@ -1,0 +1,76 @@
+import { Link } from "react-router-dom"
+import "./CSS/Home.css"
+
+const Home = () => {
+  return (
+    <div className="home-container">
+      <div className="home-content">
+        <div className="home-header">
+          <h1 className="home-title">FAQ Chatbot & Resume Analysis System</h1>
+          <p className="home-description">
+            An intelligent platform that combines AI-powered FAQ assistance with advanced resume analysis capabilities.
+          </p>
+          <div className="home-actions">
+            <Link to="/dashboard" className="primary-button">
+              <span className="icon-chart"></span>
+              <span>Dashboard</span>
+            </Link>
+            <Link to="/chat" className="secondary-button">
+              <span className="icon-message"></span>
+              <span>Chat Interface</span>
+            </Link>
+          </div>
+        </div>
+
+        <div className="features-section">
+          <h2 className="features-title">Key Features</h2>
+          <div className="features-grid">
+            <div className="feature-card">
+              <div className="feature-icon">
+                <span className="icon-message"></span>
+              </div>
+              <h3 className="feature-title">AI-Powered FAQ Chatbot</h3>
+              <p className="feature-description">
+                Intelligent chatbot that provides instant answers to frequently asked questions, learning from each
+                interaction.
+              </p>
+            </div>
+
+            <div className="feature-card">
+              <div className="feature-icon">
+                <span className="icon-file"></span>
+              </div>
+              <h3 className="feature-title">Resume Analysis</h3>
+              <p className="feature-description">
+                Advanced AI that analyzes resumes, extracts key information, and provides scoring based on job
+                requirements.
+              </p>
+            </div>
+
+            <div className="feature-card">
+              <div className="feature-icon">
+                <span className="icon-chart"></span>
+              </div>
+              <h3 className="feature-title">Comprehensive Analytics</h3>
+              <p className="feature-description">
+                Detailed insights and analytics on FAQ usage patterns and resume analysis results.
+              </p>
+            </div>
+
+            <div className="feature-card">
+              <div className="feature-icon">
+                <span className="icon-users"></span>
+              </div>
+              <h3 className="feature-title">User Management</h3>
+              <p className="feature-description">
+                Robust user management system with role-based access control and permissions.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default Home

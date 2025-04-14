@@ -1,90 +1,34 @@
-// import React from "react";
-import PropTypes from "prop-types";
-import ReactMarkdown from "react-markdown";
+import { forwardRef } from "react"
+import { cn } from "../../lib/utils"
 
-export function Card({ children, className = "" }) {
-  return (
-    <div className={`bg-white shadow-cardShadow rounded-lg  p-4 ${className}`}>
-      {children}
-    </div>
-  );
-}
+const Card = forwardRef(({ className, ...props }, ref) => (
+  <div ref={ref} className={cn("rounded-lg border bg-card text-card-foreground shadow-sm", className)} {...props} />
+))
+Card.displayName = "Card"
 
-Card.propTypes = {
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
-};
+const CardHeader = forwardRef(({ className, ...props }, ref) => (
+  <div ref={ref} className={cn("flex flex-col space-y-1.5 p-6", className)} {...props} />
+))
+CardHeader.displayName = "CardHeader"
 
-export function CardHeader({ children, className = "" }) {
-  return <div className={`mb-4 border-b pb-2 ${className}`}>{children}</div>;
-}
+const CardTitle = forwardRef(({ className, ...props }, ref) => (
+  <h3 ref={ref} className={cn("text-lg font-semibold leading-none tracking-tight", className)} {...props} />
+))
+CardTitle.displayName = "CardTitle"
 
-CardHeader.propTypes = {
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
-};
+const CardDescription = forwardRef(({ className, ...props }, ref) => (
+  <p ref={ref} className={cn("text-sm text-muted-foreground", className)} {...props} />
+))
+CardDescription.displayName = "CardDescription"
 
-export function CardTitle({ children, className = "" }) {
-  return (
-    <h2
-      className={`text-xl font-header font-medium text-neutral-darkCharcoal ${className}`}
-    >
-      {children}
-    </h2>
-  );
-}
+const CardContent = forwardRef(({ className, ...props }, ref) => (
+  <div ref={ref} className={cn("p-6 pt-0", className)} {...props} />
+))
+CardContent.displayName = "CardContent"
 
-CardTitle.propTypes = {
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
-};
+const CardFooter = forwardRef(({ className, ...props }, ref) => (
+  <div ref={ref} className={cn("flex items-center p-6 pt-0", className)} {...props} />
+))
+CardFooter.displayName = "CardFooter"
 
-export function CardDescription({ children, className = "" }) {
-  return <p className={`text-sm text-gray-600 ${className}`}>{children}</p>;
-}
-
-CardDescription.propTypes = {
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
-};
-
-export function CardContent({ children, className = "" }) {
-  return <div className={`${className}`}>{children}</div>;
-}
-
-CardContent.propTypes = {
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
-};
-
-export function CardTab({ children, className = "" }) {
-  return (
-    <div className={`w-full flex items-center justify-between ${className}`}>
-      {children}
-    </div>
-  );
-}
-
-export function CardDisabledSpan({ children, className = "" }) {
-  return <span className={`text-sm opacity-80 ${className}`}>{children}</span>;
-}
-
-export function CardFormattedText({ text }) {
-  return (
-    <div className="prose">
-      <ReactMarkdown>{text}</ReactMarkdown>
-    </div>
-  );
-}
-export function CardFooter({ children, className = "" }) {
-  return (
-    <div className={`border-t border-gray-200 p-4 flex ${className}`}>
-      {children}
-    </div>
-  );
-}
-
-CardFooter.propTypes = {
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
-};
+export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
