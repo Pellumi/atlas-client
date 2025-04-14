@@ -45,7 +45,7 @@ const Login = () => {
   return (
     <div className="login-container">
       <div className="login-form">
-        <h1 className="login-title">UniHealth</h1>
+        <h1 className="login-title">Atlas</h1>
         <form onSubmit={handleLogin}>
           <div className="input-group">
             <label htmlFor="username" className="input-label">

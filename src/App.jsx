@@ -8,8 +8,6 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import CareerChat from "./components/CareerChat";
-import ResumeGuidance from "./components/ResumeGuidance"
-
 
 function App() {
   return (
@@ -18,14 +16,14 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           {/* <Route path="/dashboard" element={<Dashboard />} /> */}
-          <Route
+          {/* <Route
             path="/career"
             element={
               <ProtectedRoute>
                 <CareerChat />
               </ProtectedRoute>
             }
-          />
+          /> */}
           <Route
             path="/chat"
             element={
@@ -42,8 +40,22 @@ function App() {
               </ProtectedRoute>
             }
           />
-           <Route path="/resume-guidance" element={<ResumeGuidance />} />
-        <Route path="/resume-guidance/:conversationId" element={<ResumeGuidance />} />
+          <Route
+            path="/resume-guidance"
+            element={
+              <ProtectedRoute>
+                <CareerChat />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/resume-guidance/:conversationId"
+            element={
+              <ProtectedRoute>
+                <CareerChat />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/Login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>
