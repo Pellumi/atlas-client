@@ -68,10 +68,11 @@ const Home = () => {
               <div className="feature-icon">
                 <span className="icon-chart"></span>
               </div>
-              <h3 className="feature-title">Comprehensive Analytics</h3>
-              <p className="feature-description">
-                Detailed insights and analytics on FAQ usage patterns and resume
-                analysis results.
+              <h3 className="feature-title">Career Guidance</h3>
+              <p className="feature-description"> By
+                aligning personal strengths with market demands, Atlas
+                empowers individuals to make informed decisions, adapt to
+                change, and pursue fulfilling paths with clarity and confidence.
               </p>
             </div>
 

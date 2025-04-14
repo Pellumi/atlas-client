@@ -527,8 +527,7 @@ const CareerChat = () => {
                           <div className="profile-resume-notice">
                             <p>
                               <span className="icon-info" /> You have a resume
-                              in your career profile. You can use it by toggling
-                              "Use Profile Resume" above.
+                              in your career profile.
                             </p>
                           </div>
                         )}
