@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import authService from "../services/authService";
-import "./CSS/Login.css"
+import "./CSS/Login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  const redirectTo = localStorage.getItem("redirectAfterLogin") || "/chat";
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -20,14 +22,18 @@ const Login = () => {
 
     try {
       setLoading(true);
-      const response = await authService.login({ email: email, password:password });
+      const response = await authService.login({
+        email: email,
+        password: password,
+      });
 
       // Store token and user info in localStorage
       localStorage.setItem("token", response.token);
       localStorage.setItem("user", JSON.stringify(response.user));
 
       toast.success("Login successful");
-      navigate("/Dashboard");
+      navigate(redirectTo, { replace: true });
+      localStorage.removeItem("redirectAfterLogin");
     } catch (err) {
       console.error("Login error:", err);
       toast.error("Invalid email or password");
@@ -69,11 +75,7 @@ const Login = () => {
             />
           </div>
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="submit-button"
-          >
+          <button type="submit" disabled={loading} className="submit-button">
             {loading ? "Logging in..." : "Login"}
           </button>
         </form>
