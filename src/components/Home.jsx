@@ -7,7 +7,7 @@ const Home = () => {
   };
 
   const handleCareer = () => {
-    localStorage.setItem("redirectAfterLogin", "/career");
+    localStorage.setItem("redirectAfterLogin", "/ResumeGuidance");
   };
 
   return (
@@ -21,7 +21,7 @@ const Home = () => {
           </p>
           <div className="home-actions">
             <Link
-              to="/career"
+              to="/ResumeGuidance"
               className="primary-button"
               onClick={() => handleCareer()}
             >

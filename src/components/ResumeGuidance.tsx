@@ -349,7 +349,7 @@ const ResumeGuidance = () => {
               <span className="icon-plus" /> New Resume Session
             </button>
  */}            <button className="new-career-button" onClick={() => startNewChat("career")}>
-              <span className="icon-briefcase" /> New Career Session
+              <span className="icon-briefcase" /> New Career Guidance Session
             </button>
           </div>
         </div>
@@ -364,7 +364,7 @@ const ResumeGuidance = () => {
                   Start Resume Session
                 </button>
  */}                <button className="new-career-button" onClick={() => startNewChat("career")}>
-                  Start Career Session
+                  Start Career Guidance Session
                 </button>
               </div>
             </div>
