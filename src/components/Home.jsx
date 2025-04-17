@@ -69,8 +69,9 @@ const Home = () => {
                 <span className="icon-chart"></span>
               </div>
               <h3 className="feature-title">Career Guidance</h3>
-              <p className="feature-description"> By
-                aligning personal strengths with market demands, Atlas
+              <p className="feature-description">
+                {" "}
+                By aligning personal strengths with market demands, Atlas
                 empowers individuals to make informed decisions, adapt to
                 change, and pursue fulfilling paths with clarity and confidence.
               </p>
@@ -82,8 +83,8 @@ const Home = () => {
               </div>
               <h3 className="feature-title">User Management</h3>
               <p className="feature-description">
-                Robust user management system with role-based access control and
-                permissions.
+                User inclusive management and feedback system. Atlas guides the
+                users through every step of the way
               </p>
             </div>
           </div>
