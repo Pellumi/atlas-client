@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import authService from "../services/authService";
-import "./CSS/Login.css";
+import "./CSS/login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
