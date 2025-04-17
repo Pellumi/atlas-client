@@ -16,18 +16,9 @@ const Home = () => {
         <div className="home-header">
           <h1 className="home-title">FAQ Chatbot & Career Guidance System</h1>
           <p className="home-description">
-            An intelligent platform that combines AI-powered FAQ assistance with
-            advanced career guidance capabilities.
+            An intelligent platform that features AI-powered FAQ assistance.
           </p>
           <div className="home-actions">
-            <Link
-              to="/resume-guidance"
-              className="primary-button"
-              onClick={() => handleCareer()}
-            >
-              <span className="icon-chart"></span>
-              <span>Career Guidance</span>
-            </Link>
             <Link
               to="/chat"
               className="secondary-button"
