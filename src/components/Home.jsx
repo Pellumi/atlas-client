@@ -20,6 +20,14 @@ const Home = () => {
           </p>
           <div className="home-actions">
             <Link
+              to="/resume-guidance"
+              className="primary-button"
+              onClick={() => handleCareer()}
+            >
+              <span className="icon-chart"></span>
+              <span>Career Guidance</span>
+            </Link>
+            <Link
               to="/chat"
               className="secondary-button"
               onClick={() => handleFaq()}
